@@ -1,0 +1,83 @@
+:root{
+    background-color: #9282da;
+    --spriteimg: url('tarotsprite8d.gif');
+    --cardboarder: 26px;
+    --spritew: 224px;
+    --spriteh: 374px;
+    --twidth: 224px;
+    --theight: 374px;
+}
+
+.tarotcard[data-faceup="false"]:hover {
+    animation-name: cardRaiseGlow;
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
+    transition-timing-function: ease-in;
+}
+
+.flip-card-inner {
+    position: absolute;
+    width: var(--twidth);
+    height: var(--theight);
+}
+
+@keyframes cardRaiseGlow {
+    to {
+        box-shadow: #dfb459c9 2.4px 2.4px 6px 5px;
+    }
+}
+
+.flip-card-inner:hover {
+    animation-name: cardRaiseShadow;
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
+    transition-timing-function: ease-in;
+}
+
+.tarotcard {
+    /*clip-path: xywh(0px 0px 224px 374px round var(--cardboarder));*/
+    width: var(--twidth);
+    height: var(--theight);
+    position: absolute;
+    border-radius: var(--cardboarder);
+    overflow: hidden;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.tarotcard[data-faceup="false"] .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.tarotcard[data-faceup="true"] .flip-card-inner {
+    transform: rotateY(0);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+    background-color: transparent;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+}
+
+.flip-card-front {
+    background: var(--spriteimg) calc(var(--spritew)*var(--col)) calc(var(--spriteh)*var(--row));
+}
+
+/* Style the back side */
+.flip-card-back {
+    background: var(--spriteimg) -2464px -2244px;
+    transform: rotateY(180deg);
+}
