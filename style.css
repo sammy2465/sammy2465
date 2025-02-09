@@ -125,14 +125,14 @@ html, body {margin: 0; height: 100%; overflow: hidden}
     top: calc(var(--theight) + var(--mattop) + var(--mattpadding));
 }
 #mat5 {
-    left: calc(var(--matleft) - (var(--mattpadding) + var(--twidth)) / 2 + var(--twidth) +var(--mattpadding));
+    left: calc(var(--matleft) - (var(--mattpadding) + var(--twidth)) / 2 + var(--twidth) + var(--mattpadding));
     top: calc(var(--theight) + var(--mattop) + var(--mattpadding));
 }
 #mat6 {
-    left: calc(var(--matleft) - (var(--mattpadding) + var(--twidth)) / 2 + var(--twidth)*2 +var(--mattpadding)*2);
+    left: calc(var(--matleft) - (var(--mattpadding) + var(--twidth)) / 2 + var(--twidth) * 2 + var(--mattpadding) * 2);
     top: calc(var(--theight) + var(--mattop) + var(--mattpadding));
 }
 #mat7 {
-    left: calc(var(--matleft) - (var(--mattpadding) + var(--twidth)) / 2 + var(--twidth)*3 +var(--mattpadding)*3);
+    left: calc(var(--matleft) - (var(--mattpadding) + var(--twidth)) / 2 + var(--twidth) * 3 + var(--mattpadding) * 3);
     top: calc(var(--theight) + var(--mattop) + var(--mattpadding));
 }
