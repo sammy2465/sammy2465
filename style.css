@@ -1,4 +1,4 @@
-:root{
+:root {
     background-color: #9282da;
     --spriteimg: url('tarotsprite8d.gif');
     --cardboarder: 26px;
@@ -7,104 +7,153 @@
     --twidth: 224px;
     --theight: 374px;
 
-    --mattop: 400px;
-    --matleft: 250px;
+    --mattop: 40%;
+    --matleft: 13%;
     --mattpadding: 24px;
 }
-html, body {margin: 0; height: 100%; overflow: hidden}
-
-.tarotcard[data-faceup="false"]:hover {
-    animation-name: cardRaiseGlow;
-    animation-delay: 500ms;
-    animation-duration: 500ms;
-    animation-fill-mode: forwards;
-    transition-timing-function: ease-in;
-}
-
-.tarotcard[data-faceup="true"]:hover {
-    animation-name: cardRaiseHighlight;
-    animation-delay: 500ms;
-    animation-duration: 500ms;
-    animation-fill-mode: forwards;
-    transition-timing-function: ease-in;
-}
-
-.flip-card-inner {
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  html,
+  body {
+    height: 100%;
+  }
+  body {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    overflow: hidden;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  #container {
+    position: fixed;
+    top: 10%;
+    left: 10%;
+  }
+  #topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 5%;
+    width: 100%;
+    background-color: #c5a929;
+    padding: 0.25rem;
+    text-align: center;
+  }
+  #topbar button {
+    height: 100%;
+    background: none;
+    border: 1px solid #fff;
+    outline: none;
+    margin: 0.1rem;
+    padding: 0.4rem;
+    font: inherit;
+    font-size: 100%;
+    line-height: 1;
+    color: #fff;
+    cursor: pointer;
+  }
+  #topbar button:hover {
+    background-color: #fff;
+    color: #444;
+  }
+  .message {
+    position: fixed;
+    top: 2.5rem;
+    left: 0;
+    width: 100%;
+    padding: 1rem 0.5rem;
+    font-size: 0.5rem;
+    text-align: center;
+  }
+  .card {
     position: absolute;
+    display: inline-block;
     width: var(--twidth);
     height: var(--theight);
-}
-
-@keyframes cardRaiseHighlight {
-    to {
-        box-shadow: #ffffffdc 1.4px 1.4px 6px 1px;
-    }
-}
-
-@keyframes cardRaiseGlow {
-    to {
-        box-shadow: #dfb459c9 2.4px 2.4px 6px 5px;
-    }
-}
-
-.flip-card-inner:hover {
-    animation-name: cardRaiseShadow;
-    animation-duration: 500ms;
-    animation-fill-mode: forwards;
-    transition-timing-function: ease-in;
-}
-
-.tarotcard {
-    scale: 1.0;
-    /*clip-path: xywh(0px 0px 224px 374px round var(--cardboarder));*/
-    width: var(--twidth);
-    height: var(--theight);
-    position: absolute;
+    background-color: #000000;
+    -webkit-border-radius: var(--cardboarder);
     border-radius: var(--cardboarder);
     overflow: hidden;
-    perspective: 1000px; /* Remove this if you don't want the 3D effect */
-}
-
-/* This container is needed to position the front and back side */
-.flip-card-inner {
-    scale: 1.08;
-    background-color: transparent;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.5s;
-    transform-style: preserve-3d;
-}
-
-/* Do an horizontal flip when you move the mouse over the flip box container */
-.tarotcard[data-faceup="false"] .flip-card-inner {
-    transform: rotateY(180deg);
-}
-
-.tarotcard[data-faceup="true"] .flip-card-inner {
-    transform: rotateY(0);
-}
-
-/* Position the front and back side */
-.flip-card-front, .flip-card-back {
-    background-color: transparent;
+    -webkit-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.15);
+    box-shadow: 0 1px 1px rgba(255, 255, 255, 0.15);
+    cursor: default;
+    will-change: transform;
+  }
+  .card:before,
+  .card:after {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden; /* Safari */
-    backface-visibility: hidden;
-}
-
-.flip-card-front {
+    font-size: 0.7rem;
+    text-align: center;
+    line-height: 0.7rem;
+    white-space: pre-line;
+    width: 0.55rem;
+    letter-spacing: -0.1rem;
+  }
+  .card:before {
+    top: 0.15rem;
+    left: 0;
+  }
+  .card:after {
+    bottom: 0.1rem;
+    right: 0;
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+  .card .face {
+    scale: 1.08;
+    width: var(--spritew);
+    height: var(--spriteh);
     background: var(--spriteimg) calc(var(--spritew)*var(--col)) calc(var(--spriteh)*var(--row));
-}
-
-/* Style the back side */
-.flip-card-back {
+  }
+  .card .back {
+    width: var(--spritew);
+    height: var(--spriteh);
     background: var(--spriteimg) -2464px -2244px;
-    transform: rotateY(180deg);
-}
+  }
+  /* .card.spades.rank1 .face {
+    background-image: url("faces/0_1.svg");
+  } */
 
-.mat {
+  @media (max-width: 540px) {
+    #topbar {
+      text-align: left;
+    }
+    .gh-ribbon {
+      -webkit-transform: scale(0.5);
+      -moz-transform: scale(0.5);
+      -o-transform: scale(0.5);
+      -ms-transform: scale(0.5);
+      transform: scale(0.5);
+      -webkit-transform-origin: 100% 0;
+      -moz-transform-origin: 100% 0;
+      -o-transform-origin: 100% 0;
+      -ms-transform-origin: 100% 0;
+      transform-origin: 100% 0;
+    }
+  }
+  @media (min-width: 640px) {
+    html {
+      font-size: 125%;
+    }
+  }
+
+  .mat {
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     position: absolute;
 }
 
@@ -135,4 +184,16 @@ html, body {margin: 0; height: 100%; overflow: hidden}
 #mat7 {
     left: calc(var(--matleft) - (var(--mattpadding) + var(--twidth)) / 2 + var(--twidth) * 3 + var(--mattpadding) * 3);
     top: calc(var(--theight) + var(--mattop) + var(--mattpadding));
+}
+
+@keyframes cardRaiseHighlight {
+    to {
+        box-shadow: #ffffffdc 1.4px 1.4px 6px 1px;
+    }
+}
+
+@keyframes cardRaiseGlow {
+    to {
+        box-shadow: #dfb459c9 2.4px 2.4px 6px 5px;
+    }
 }
