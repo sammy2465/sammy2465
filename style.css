@@ -6,7 +6,12 @@
     --spriteh: 374px;
     --twidth: 224px;
     --theight: 374px;
+
+    --mattop: 400px;
+    --matleft: 250px;
+    --mattpadding: 24px;
 }
+html, body {margin: 0; height: 100%; overflow: hidden}
 
 .tarotcard[data-faceup="false"]:hover {
     animation-name: cardRaiseGlow;
@@ -99,7 +104,35 @@
     transform: rotateY(180deg);
 }
 
-#mat {
-    border-radius: var(--cardboarder);
-    fill: rgba(35, 180, 180, 0.288);
+.mat {
+    position: absolute;
+}
+
+#mat1 {
+    left: var(--matleft);
+    top: var(--mattop);
+}
+#mat2 {
+    left: calc(var(--twidth) + var(--matleft) + var(--mattpadding));
+    top: var(--mattop);
+}
+#mat3 {
+    left: calc(var(--twidth) * 2 + var(--matleft) + var(--mattpadding) * 2);
+    top: var(--mattop);
+}
+#mat4 {
+    left: calc(var(--matleft) - (var(--mattpadding) + var(--twidth)) / 2);
+    top: calc(var(--theight) + var(--mattop) + var(--mattpadding));
+}
+#mat5 {
+    left: calc(var(--matleft) - (var(--mattpadding) + var(--twidth)) / 2 + var(--twidth) +var(--mattpadding));
+    top: calc(var(--theight) + var(--mattop) + var(--mattpadding));
+}
+#mat6 {
+    left: calc(var(--matleft) - (var(--mattpadding) + var(--twidth)) / 2 + var(--twidth)*2 +var(--mattpadding)*2);
+    top: calc(var(--theight) + var(--mattop) + var(--mattpadding));
+}
+#mat7 {
+    left: calc(var(--matleft) - (var(--mattpadding) + var(--twidth)) / 2 + var(--twidth)*3 +var(--mattpadding)*3);
+    top: calc(var(--theight) + var(--mattop) + var(--mattpadding));
 }

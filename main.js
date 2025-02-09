@@ -4,39 +4,43 @@ const colnum = 14;
 
 document.addEventListener('DOMContentLoaded', function () {
   addCards();
+  addListener(window, 'mousedown', onMousedown);
+  addListener(window, 'touchstart', onMousedown);
 });
 
 function addListener(target, name, listener) {
-  target.addEventListener(name, listener);
+  target.addEventListener(name, listener, {passive: false});
 }
 
 function removeListener(target, name, listener) {
-  target.removeEventListener(name, listener);
+  target.removeEventListener(name, listener, {passive: false});
 }
 
 function setSide(card, face) {
   card.setAttribute("data-faceup", face)
 }
 
-function onMousedown(e) {
-  var card = e.currentTarget
+function onMousedown(d) {
+  if (d.target === null || d.target.parentElement.parentElement === null) {
+    return;
+  }
+  var card = d.target.parentElement.parentElement;
   var pos = {};
   var off = {};
   var starttime = Date.now();
-
-  e.preventDefault();
+  d.preventDefault();
 
   // get start coordinates and start listening window events
-  if (e.type === 'mousedown') {
-    pos.x = e.clientX;
-    pos.y = e.clientY;
+  if (d.type === 'mousedown') {
+    pos.x = d.clientX;
+    pos.y = d.clientY;
     off.x = (card.offsetLeft-pos.x);
     off.y = (card.offsetTop-pos.y)
     addListener(window, 'mousemove', onMousemove);
     addListener(window, 'mouseup', onMouseup);
   } else {
-    pos.x = e.touches[0].clientX;
-    pos.y = e.touches[0].clientY;
+    pos.x = d.touches[0].clientX;
+    pos.y = d.touches[0].clientY;
     off.x = (card.offsetLeft-pos.x);
     off.y = (card.offsetTop-pos.y)
     addListener(window, 'touchmove', onMousemove);
@@ -45,13 +49,14 @@ function onMousedown(e) {
 
   card.style.zIndex = ++maxZ;
 
-  function onMousemove(e) {
-    if (e.type === 'mousemove') {
-      pos.x = e.clientX;
-      pos.y = e.clientY;
+  function onMousemove(m) {
+    m.stopImmediatePropagation();
+    if (m.type === 'mousemove') {
+      pos.x = m.clientX;
+      pos.y = m.clientY;
     } else {
-      pos.x = e.touches[0].clientX;
-      pos.y = e.touches[0].clientY;
+      pos.x = m.touches[0].clientX;
+      pos.y = m.touches[0].clientY;
     }
 
     // move card
@@ -59,18 +64,21 @@ function onMousedown(e) {
     card.style.top = (off.y + pos.y) + 'px';
   }
 
-  function onMouseup(e) {
+  function onMouseup(u) {
+    u.stopImmediatePropagation();
     if (Date.now() - starttime < 180) {
       // flip sides
       self.setSide(card, card.getAttribute("data-faceup") === 'true'? 'false' : 'true');
     }
-    if (e.type === 'mouseup') {
+    if (u.type === 'mouseup') {
       removeListener(window, 'mousemove', onMousemove);
       removeListener(window, 'mouseup', onMouseup);
     } else {
       removeListener(window, 'touchmove', onMousemove);
       removeListener(window, 'touchend', onMouseup);
-    }    
+    }
+    self.x = self.x - d.clientX +u.clientX;
+    self.y = self.y - d.clientY +u.clientY;
   }
 }
 
@@ -93,9 +101,6 @@ function getCard(index) {
   card.classList.add("tarotcard");
   card.setAttribute("data-faceup", "false");
   card.style.zIndex = Math.ceil(Math.random()*95);
-  
-  addListener(card, 'mousedown', onMousedown);
-  addListener(card, 'touchstart', onMousedown);
 
   // inner div
   const inner = document.createElement("div");
