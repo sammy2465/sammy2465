@@ -10,6 +10,15 @@
 
 .tarotcard[data-faceup="false"]:hover {
     animation-name: cardRaiseGlow;
+    animation-delay: 500ms;
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
+    transition-timing-function: ease-in;
+}
+
+.tarotcard[data-faceup="true"]:hover {
+    animation-name: cardRaiseHighlight;
+    animation-delay: 500ms;
     animation-duration: 500ms;
     animation-fill-mode: forwards;
     transition-timing-function: ease-in;
@@ -19,6 +28,12 @@
     position: absolute;
     width: var(--twidth);
     height: var(--theight);
+}
+
+@keyframes cardRaiseHighlight {
+    to {
+        box-shadow: #ffffffdc 1.4px 1.4px 6px 1px;
+    }
 }
 
 @keyframes cardRaiseGlow {
@@ -35,6 +50,7 @@
 }
 
 .tarotcard {
+    scale: 1.0;
     /*clip-path: xywh(0px 0px 224px 374px round var(--cardboarder));*/
     width: var(--twidth);
     height: var(--theight);
@@ -46,6 +62,7 @@
 
 /* This container is needed to position the front and back side */
 .flip-card-inner {
+    scale: 1.08;
     background-color: transparent;
     width: 100%;
     height: 100%;
@@ -80,4 +97,9 @@
 .flip-card-back {
     background: var(--spriteimg) -2464px -2244px;
     transform: rotateY(180deg);
+}
+
+#mat {
+    border-radius: var(--cardboarder);
+    fill: rgba(35, 180, 180, 0.288);
 }

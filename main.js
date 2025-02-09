@@ -91,8 +91,9 @@ function getCard(index) {
   // card
   const card = document.createElement("div");
   card.classList.add("tarotcard");
-  card.setAttribute("data-faceup", "true");
-
+  card.setAttribute("data-faceup", "false");
+  card.style.zIndex = Math.ceil(Math.random()*95);
+  
   addListener(card, 'mousedown', onMousedown);
   addListener(card, 'touchstart', onMousedown);
 
