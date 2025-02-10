@@ -336,7 +336,7 @@ var Deck = (function () {
       }
 
       function onMouseup(e) {
-        if (isFlippable && Date.now() - starttime < 200) {
+        if (isFlippable && Date.now() - starttime < 200 && Math.abs(startPos.x-pos.x)<5 && Math.abs(startPos.y-pos.y)<5) {
           // flip sides
           self.setSide(self.side === 'front' ? 'back' : 'front');
         }
@@ -604,51 +604,6 @@ var Deck = (function () {
   };
 
   var __fontSize;
-
-  var poker = {
-    deck: function deck(_deck4) {
-      _deck4.poker = _deck4.queued(poker);
-
-      function poker(next) {
-        var cards = _deck4.cards;
-        var len = cards.length;
-
-        __fontSize = fontSize();
-
-        cards.slice(-5).reverse().forEach(function (card, i) {
-          card.poker(i, len, function (i) {
-            card.setSide('front');
-            if (i === 4) {
-              next();
-            }
-          });
-        });
-      }
-    },
-    card: function card(_card4) {
-      var $el = _card4.$el;
-
-      _card4.poker = function (i, len, cb) {
-        var delay = i * 250;
-
-        _card4.animateTo({
-          delay: delay,
-          duration: 250,
-
-          x: Math.round((i - 2.05) * 70 * __fontSize / 16),
-          y: Math.round(-110 * __fontSize / 16),
-          rot: 0,
-
-          onStart: function onStart() {
-            $el.style.zIndex = len - 1 + i;
-          },
-          onComplete: function onComplete() {
-            cb(i);
-          }
-        });
-      };
-    }
-  };
 
   var intro = {
     deck: function deck(_deck5) {

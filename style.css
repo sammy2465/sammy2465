@@ -8,7 +8,7 @@
     --theight: 374px;
 
     --mattop: 40%;
-    --matleft: 13%;
+    --matleft: 23%;
     --mattpadding: 24px;
 }
 * {
@@ -33,36 +33,44 @@
     text-size-adjust: 100%;
   }
   #container {
+    z-index: 8000;
     position: fixed;
     top: 10%;
     left: 10%;
   }
   #topbar {
+    z-index: 12000;
+    display: flex;
     position: fixed;
-    top: 0;
-    left: 0;
     height: 5%;
     width: 100%;
-    background-color: #c5a929;
-    padding: 0.25rem;
-    text-align: center;
-  }
-  #topbar button {
-    height: 100%;
-    background: none;
-    border: 1px solid #fff;
-    outline: none;
-    margin: 0.1rem;
+    justify-content: left;
+    background-color: #442a5c;
     padding: 0.4rem;
-    font: inherit;
-    font-size: 100%;
-    line-height: 1;
-    color: #fff;
+  }
+
+  #toplogo {
+    background-color: antiquewhite;
+    border-radius: 50%;
+    margin-inline: 4%;
+    height: auto;   
+  }
+
+  #topbar button {
+    z-index: 8000;
+    height: auto;
+    background: none;
+    border: 1px solid #bea32b;
+    outline: none;
+    padding-inline: 1%;
+    margin-inline: 3%;
+    font-size: 150%;
+    color: #bea32b;
     cursor: pointer;
   }
   #topbar button:hover {
-    background-color: #fff;
-    color: #444;
+    background-color: #bea32b;
+    color: #1e0931;
   }
   .message {
     position: fixed;
@@ -149,6 +157,7 @@
   }
 
   .mat {
+
     pointer-events: none;
     -webkit-user-select: none;
     -moz-user-select: none;
