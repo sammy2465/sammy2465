@@ -1,19 +1,17 @@
 :root {
     background-color: #9282da;
-    --spriteimg: url('tarotsprite8d.gif');
-    --cardboarder: 26px;
+    --spriteimg: url('tarotsprite_lr.jpg');
+    --cardboarder: 1.5vmin;
     --spritew: 224px;
     --spriteh: 374px;
-    --twidth: 224px;
-    --theight: 374px;
 
+    --twidth: calc(2.24 * 10vmin);
+    --theight: calc(3.74 * 10vmin);
     --mattop: 40%;
     --matleft: 23%;
-    --mattpadding: 24px;
+    --mattpadding: 1.5vmin;
 }
 * {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -23,14 +21,8 @@
     height: 100%;
   }
   body {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
     overflow: hidden;
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-    text-size-adjust: 100%;
   }
   #container {
     z-index: 8000;
@@ -87,12 +79,9 @@
     width: var(--twidth);
     height: var(--theight);
     background-color: #000000;
-    -webkit-border-radius: var(--cardboarder);
-    border-radius: var(--cardboarder);
+    border-radius: 1.5vmin;
     overflow: hidden;
-    -webkit-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.15);
     box-shadow: 0 1px 1px rgba(255, 255, 255, 0.15);
-    cursor: default;
     will-change: transform;
   }
   .card:before,
@@ -120,14 +109,18 @@
   }
   .card .face {
     scale: 1.08;
-    width: var(--spritew);
-    height: var(--spriteh);
-    background: var(--spriteimg) calc(var(--spritew)*var(--col)) calc(var(--spriteh)*var(--row));
+    width: var(--twidth);
+    height: var(--theight);
+    background-image: var(--spriteimg);
+    background-size: 1400% 700%;
+    background-position: calc(100% * var(--col)) calc(100% * var(--row));
   }
   .card .back {
-    width: var(--spritew);
-    height: var(--spriteh);
-    background: var(--spriteimg) -2464px -2244px;
+    width: var(--twidth);
+    height: var(--theight);
+    background-image: var(--spriteimg);
+    background-size: 1400% 700%;
+    background-position: calc(100% * -11) calc(100% * -6);
   }
   /* .card.spades.rank1 .face {
     background-image: url("faces/0_1.svg");
@@ -138,15 +131,7 @@
       text-align: left;
     }
     .gh-ribbon {
-      -webkit-transform: scale(0.5);
-      -moz-transform: scale(0.5);
-      -o-transform: scale(0.5);
-      -ms-transform: scale(0.5);
       transform: scale(0.5);
-      -webkit-transform-origin: 100% 0;
-      -moz-transform-origin: 100% 0;
-      -o-transform-origin: 100% 0;
-      -ms-transform-origin: 100% 0;
       transform-origin: 100% 0;
     }
   }
@@ -157,15 +142,14 @@
   }
 
   .mat {
-
     pointer-events: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
     position: absolute;
 }
-
+.mat > img {
+  width: var(--twidth);
+  height: var(--theight);
+}
 #mat1 {
     left: var(--matleft);
     top: var(--mattop);
