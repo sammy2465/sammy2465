@@ -11,10 +11,169 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
     <link rel="icon" href="favicon.ico"/>
-    <link href="style.css" rel="stylesheet"/>
+    <style>
+        :root {
+    background-color: #9282da;
+    --spriteimg: url('tarotsprite_lr.jpg');
+    --cardboarder: 1.5vmin;
+    --twidth: calc(2.24 * 7vmin);
+    --theight: calc(3.74 * 7vmin);
+    --mattop: calc(var(--theight)*2);
+    --matleft: 20%;
+    --mattpadding: 1.5vmin;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  html,
+  body {
+    height: 100%;
+  }
+  body {
+    user-select: none;
+    overflow: hidden;
+  }
+  #container {
+    z-index: 8000;
+    position: fixed;
+    top: 10vmin;
+    left: 10vmin;
+  }
+  #topbar {
+    z-index: 12000;
+    display: flex;
+    position: fixed;
+    height: 7vmin;
+    width: 100%;
+    justify-content: left;
+    background-color: #442a5c;
+    padding: 1vmin;
+  }
+
+  #toplogo {
+    background-color: antiquewhite;
+    border-radius: 50%;
+    margin-inline: 4vmin;
+    height: auto;   
+  }
+
+  #topbar button {
+    z-index: 8000;
+    height: 4vmin;
+    background: none;
+    border: 0.1vmin solid #bea32b;
+    outline: none;
+    padding-inline: 1vmin;
+    margin-inline: 2vmin;
+    font-size: 3vmin;
+    color: #bea32b;
+    cursor: pointer;
+  }
+  #topbar button:hover {
+    background-color: #bea32b;
+    color: #1e0931;
+  }
+  .card {
+    position: absolute;
+    display: inline-block;
+    width: var(--twidth);
+    height: var(--theight);
+    background-color: #000000;
+    border-radius: 1.5vmin;
+    overflow: hidden;
+    box-shadow: 0 0.1vmin 0.1vmin rgba(255, 255, 255, 0.15);
+    will-change: transform;
+  }
+  .card:after {
+    bottom: 0.1rem;
+    right: 0;
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+  .card .face {
+    scale: 1.08;
+    width: var(--twidth);
+    height: var(--theight);
+    background-image: var(--spriteimg);
+    background-size: 1400% 700%;
+    background-position: calc(100% * var(--col)) calc(100% * var(--row));
+  }
+  .card .back {
+    width: var(--twidth);
+    height: var(--theight);
+    background-image: var(--spriteimg);
+    background-size: 1400% 700%;
+    background-position: calc(100% * -11) calc(100% * -6);
+  }
+  /* .card.spades.rank1 .face {
+    background-image: url("faces/0_1.svg");
+  } */
+
+  @media (max-width: 540px) {
+    #topbar {
+      text-align: left;
+    }
+    .gh-ribbon {
+      transform: scale(0.5);
+      transform-origin: 100% 0;
+    }
+  }
+  @media (min-width: 640px) {
+    html {
+      font-size: 125%;
+    }
+  }
+
+  #matcontainer {
+    display: block;
+  }
+  .mat {
+    pointer-events: none;
+    user-select: none;
+    position: absolute;
+}
+.mat > img {
+  width: var(--twidth);
+  height: var(--theight);
+}
+#mat1 {
+    left: var(--matleft);
+    top: var(--mattop);
+}
+#mat2 {
+    left: calc(var(--twidth) + var(--matleft) + var(--mattpadding));
+    top: var(--mattop);
+}
+#mat3 {
+    left: calc(var(--twidth) * 2 + var(--matleft) + var(--mattpadding) * 2);
+    top: var(--mattop);
+}
+#mat4 {
+    left: calc(var(--matleft) - (var(--mattpadding) + var(--twidth)) / 2);
+    top: calc(var(--theight) + var(--mattop) + var(--mattpadding));
+}
+#mat5 {
+    left: calc(var(--matleft) - (var(--mattpadding) + var(--twidth)) / 2 + var(--twidth) + var(--mattpadding));
+    top: calc(var(--theight) + var(--mattop) + var(--mattpadding));
+}
+#mat6 {
+    left: calc(var(--matleft) - (var(--mattpadding) + var(--twidth)) / 2 + var(--twidth) * 2 + var(--mattpadding) * 2);
+    top: calc(var(--theight) + var(--mattop) + var(--mattpadding));
+}
+#mat7 {
+    left: calc(var(--matleft) - (var(--mattpadding) + var(--twidth)) / 2 + var(--twidth) * 3 + var(--mattpadding) * 3);
+    top: calc(var(--theight) + var(--mattop) + var(--mattpadding));
+}
+    </style>
     <title>Horonimitchitti Thai Oracle</title>
   </head>
   <body>
+    <div id="matcontainer">
     <div id="mat1" class="mat">
         <img src="mat.svg" alt="Mat position 1 to drop down a tarot card."/>
     </div>
@@ -36,11 +195,11 @@
     <div id="mat7" class="mat">
         <img src="mat.svg" alt="Mat position 7 to drop down a tarot card."/>
     </div>
+</div>
     <div id="container"></div>
     <div id="topbar">
         <img id="toplogo" src="logo.svg"/>
     </div>
     <script src="deck.js"></script>
-    <script src="main.js"></script>
   </body>
 </html>
