@@ -137,7 +137,7 @@ var Deck = (function () {
     var $p = document.createElement('p');
 
     document.body.appendChild($p);
-    $p.style[transform] = 'translate3d(1px,1px,1px)';
+    $p.style[transform] = 'translate3d(0.1vmin,0.1vmin,0.1vmin)';
 
     has3d = $p.style[transform];
     has3d = has3d != null && has3d.length && has3d !== 'none';
@@ -185,7 +185,7 @@ var Deck = (function () {
     $back.classList.add('back');
 
     // add default transform
-    $el.style[transform] = translate(-z + 'px', -z + 'px');
+    $el.style[transform] = translate(-z*0.1 + 'vmin', -z*0.1  + 'vmin');
 
     // add default values
     self.x = -z
@@ -241,7 +241,7 @@ var Deck = (function () {
         self.y = startY + diffY * et;
         self.rot = startRot + diffRot * et;
 
-        $el.style[transform] = translate(self.x + 'px', self.y + 'px') + (diffRot ? 'rotate(' + self.rot + 'deg)' : '');
+        $el.style[transform] = translate(self.x*0.1 + 'vmin', self.y*0.1 + 'vmin') + (diffRot ? 'rotate(' + self.rot + 'deg)' : '');
       }).end(function () {
         onComplete && onComplete();
       });
@@ -637,7 +637,7 @@ var Deck = (function () {
         var delay = 500 + i * 10;
         var z = i / 4;
 
-        $el.style[transform] = translate(-z + 'px', '-250px');
+        $el.style[transform] = translate(-z*0.1 + 'vmin', '-25vmin');
         $el.style.opacity = 0;
 
         _card5.x = -z;
@@ -905,10 +905,10 @@ var $shuffle = document.createElement('button')
 var $fan = document.createElement('button')
 var $flip = document.createElement('button')
 
-$shuffle.textContent = 'Shuffle'
-$sort.textContent = 'Sort'
-$fan.textContent = 'Fan'
-$flip.textContent = 'Flip'
+$shuffle.textContent = '\u{292E} Shuffle'
+$sort.textContent = '\u{2264} Sort'
+$fan.textContent = '\u{1F323} Fan'
+$flip.textContent = '\u{21BB} Flip'
 
 $topbar.appendChild($flip)
 $topbar.appendChild($shuffle)

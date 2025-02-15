@@ -50,6 +50,10 @@
   }
 
   #topbar button {
+    border-radius: var(--cardboarder);
+    text-wrap-mode: nowrap;
+    font-family: 'Brush Script MT', cursive;
+    font-weight: bold;
     z-index: 999999;
     display: flex;
     flex-shrink: 1;
@@ -107,7 +111,6 @@
   #matcontainer {
     width: auto;
     height: max(60vw, 60vh);
-    justify-self: center;
     flex-grow: 1;
     flex-direction: column;
     display: flex;
