@@ -1,0 +1,156 @@
+
+:root {
+  --russian-violet: #442a5cff;
+  --satin-sheen-gold: #bea32bff;
+  --lavender-web: #e3dfffff;
+  --dark-cyan: #558c8cff;
+  --falu-red: #782121ff;
+    background-color: var(--dark-cyan);
+    --spriteimg: url('tarotsprite_lr.jpg');
+    --cardboarder: 1.5vmin;
+    --twidth: calc(2.24 * 10vmin);
+    --theight: calc(3.74 * 10vmin);
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  html,
+  body {
+    gap: 4vmin;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    user-select: none;
+  }
+  #container {
+    width: max(30vw, 30vh);
+    height: max(30vw, 30vh);
+  }
+
+  #topbar {
+    z-index: 999999;
+    justify-content: space-between;
+    user-select: none;
+    display: flex;
+    height: 6vh;
+    width: 100%;
+    background-color:var(--russian-violet);
+    padding: 1vh;
+  }
+
+  #toplogo {
+    justify-self: flex-start;
+    background-color: var(--lavender-web);
+    border-radius: 50%;
+    margin-inline: 2vh;
+    height: auto;   
+  }
+
+  #topbar button {
+    z-index: 999999;
+    display: flex;
+    flex-shrink: 1;
+    height: 4vh;
+    background: none;
+    border: 0.1vh solid var(--satin-sheen-gold);
+    outline: none;
+    font-size: 3vh;
+    color: var(--satin-sheen-gold);
+    margin-inline: 0.5vh;
+    padding-inline: 0.5vh;
+    cursor: pointer;
+  }
+  #topbar button:hover {
+    background-color: var(--satin-sheen-gold);
+    color: var(--russian-violet);
+  }
+  .card {
+    position: absolute;
+    display: inline-block;
+    width: var(--twidth);
+    height: var(--theight);
+    border-radius: var(--cardboarder);
+    overflow: hidden;
+    /*box-shadow: 0 0.1vmin 0.1vmin rgba(255, 255, 255, 0.15);*/
+    will-change: transform;
+  }
+  .card:after {
+    bottom: 0.1rem;
+    right: 0;
+    transform: rotate(180deg);
+  }
+  .card .face {
+    scale: 1.08;
+    width: var(--twidth);
+    height: var(--theight);
+    background-image: var(--spriteimg);
+    background-size: 1400% 700%;
+    background-position: calc(100% * var(--col)) calc(100% * var(--row));
+  }
+  .card .back {
+    width: var(--twidth);
+    height: var(--theight);
+    background-image: var(--spriteimg);
+    background-size: 1400% 700%;
+    background-position: calc(100% * -11) calc(100% * -6);
+  }
+.hovereffect, .card:hover {
+  border-radius: var(--cardboarder);
+  box-shadow: -0.3vmin -0.3vmin 0.9vmin 0.3vmin var(--satin-sheen-gold);
+  width: var(--twidth);
+  height: var(--theight);
+}
+  #matcontainer {
+    width: auto;
+    height: max(60vw, 60vh);
+    justify-self: center;
+    flex-grow: 1;
+    flex-direction: column;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1.5vmin;
+  }
+
+  .mat {
+    border-radius: var(--cardboarder);
+    box-shadow: inset 0.5vmin 1vmin 3.5vmin  1vmin  rgba(0,0,0,0.49);
+    /*opacity: 0.5;*/
+    width: var(--twidth);
+    height: var(--theight);
+    background-repeat: no-repeat;
+    background: url("mat.svg");
+    background-size: contain;
+    pointer-events: none;
+    user-select: none;
+}
+
+.mat::after {
+  content: "";
+  z-index: -1;
+  display: block;
+  position: relative;
+  border-radius: 50%;
+  background-color: var(--satin-sheen-gold);
+  background-size: var(--cardboarder);
+  background-repeat: no-repeat;
+  width: var(--twidth);
+  height: var(--theight);
+}
+
+#matrow1 {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  gap: 1.5vmin;
+  flex-direction: row;
+}
+#matrow2 {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 1.5vmin;
+flex-direction: row;
+}

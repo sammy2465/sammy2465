@@ -188,8 +188,8 @@ var Deck = (function () {
     $el.style[transform] = translate(-z + 'px', -z + 'px');
 
     // add default values
-    self.x = -z;
-    self.y = -z;
+    self.x = -z
+    self.y = -z
     self.z = z;
     self.rot = 0;
 
@@ -332,6 +332,7 @@ var Deck = (function () {
         }
 
         // move card
+        $el.classList.add("hovereffect");
         $el.style[transform] = translate(Math.round(self.x + pos.x - startPos.x) + 'px', Math.round(self.y + pos.y - startPos.y) + 'px') + (self.rot ? ' rotate(' + self.rot + 'deg)' : '');
       }
 
@@ -347,6 +348,8 @@ var Deck = (function () {
           removeListener(window, 'touchmove', onMousemove);
           removeListener(window, 'touchend', onMouseup);
         }
+
+        $el.classList.remove("hovereffect");
         if (!isDraggable) {
           // is not draggable, do nothing
           return;
