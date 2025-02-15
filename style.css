@@ -57,9 +57,10 @@
     background: none;
     border: 0.1vh solid var(--satin-sheen-gold);
     outline: none;
-    font-size: 3vh;
+    font-size: 1.5vh;
     color: var(--satin-sheen-gold);
     margin-inline: 0.5vh;
+    padding-top: 1vh;
     padding-inline: 0.5vh;
     cursor: pointer;
   }
