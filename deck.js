@@ -907,7 +907,7 @@ var $flip = document.createElement('button')
 
 $shuffle.textContent = '\u{292E} Shuffle'
 $sort.textContent = '\u{2264} Sort'
-$fan.textContent = '\u{1F323} Fan'
+$fan.textContent = '\u{263C} Fan'
 $flip.textContent = '\u{21BB} Flip'
 
 $topbar.appendChild($flip)

@@ -14,7 +14,6 @@
 * {
     box-sizing: border-box;
     margin: 0;
-    padding: 0;
   }
   html,
   body {
@@ -30,42 +29,47 @@
     height: max(30vw, 30vh);
   }
 
-  #topbar {
+  #topbar {    
     z-index: 999999;
-    justify-content: space-between;
+    justify-content: space-around;
     user-select: none;
     display: flex;
-    height: 6vh;
+    height: 6vmax;
     width: 100%;
     background-color:var(--russian-violet);
-    padding: 1vh;
+    padding: 1vmax;
   }
 
   #toplogo {
-    justify-self: flex-start;
+    align-self: center;
+    height: 4vmax;
+  }
+
+  #toplogo > img {
     background-color: var(--lavender-web);
     border-radius: 50%;
-    margin-inline: 2vh;
-    height: auto;   
+    height: 4vmax;
+    box-shadow: 0.2vmax 0.2vmax 0.6vmax rgba(0, 0, 0, 0.719);
   }
 
   #topbar button {
-    border-radius: var(--cardboarder);
-    text-wrap-mode: nowrap;
+    filter: blur(0.1);
+    line-height: 4vmax;
+    text-align:center;
+    text-wrap: nowrap;
+    border-radius: 1.5vmax;
     font-family: 'Brush Script MT', cursive;
     font-weight: bold;
     z-index: 999999;
     display: flex;
-    flex-shrink: 1;
-    height: 4vh;
+    height: 4vmax;
+    font-size: 2vmax;
+    padding-inline: 0.5vmax;
+    width: fit-content;
     background: none;
-    border: 0.1vh solid var(--satin-sheen-gold);
+    border: 0.2vmax solid var(--satin-sheen-gold);
     outline: none;
-    font-size: 1.5vh;
     color: var(--satin-sheen-gold);
-    margin-inline: 0.5vh;
-    padding-top: 1vh;
-    padding-inline: 0.5vh;
     cursor: pointer;
   }
   #topbar button:hover {
