@@ -76,42 +76,103 @@
     background-color: var(--satin-sheen-gold);
     color: var(--russian-violet);
   }
-  .card {
+  .card {    
     position: absolute;
     display: inline-block;
     width: var(--twidth);
     height: var(--theight);
-    border-radius: var(--cardboarder);
-    overflow: hidden;
-    /*box-shadow: 0 0.1vmin 0.1vmin rgba(255, 255, 255, 0.15);*/
     will-change: transform;
   }
   .card:after {
-    bottom: 0.1rem;
+    bottom: 0.1vmin;
     right: 0;
     transform: rotate(180deg);
   }
-  .card .face {
+
+  .face, .back {
+    clip-path: inset(4% 4% 4% 4% round var(--cardboarder));
     scale: 1.08;
     width: var(--twidth);
     height: var(--theight);
     background-image: var(--spriteimg);
-    background-size: 1400% 700%;
+    background-size: 1400% 700%;    
+  }
+
+  .face {
     background-position: calc(100% * var(--col)) calc(100% * var(--row));
   }
-  .card .back {
-    width: var(--twidth);
-    height: var(--theight);
-    background-image: var(--spriteimg);
-    background-size: 1400% 700%;
+  .back {
     background-position: calc(100% * -11) calc(100% * -6);
   }
-.hovereffect, .card:hover {
+
+  @property --angle {
+    syntax:  "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  .hovereffect:has(>.face)::before, .card:has(>.face):hover::before {
+    scale: 0.93;
+    filter: blur(1vmin);
+    border-radius: var(--cardboarder);
+    background-color: var(--lavender-web);
+    padding: 1.5vmin 1vmin;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    content: "";
+    width: var(--twidth);
+    height: var(--theight);
+    z-index: -1;
+  }
+
+.hovereffect:has(>.back)::before, .card:has(>.back):hover::before {
+  /*inset: -20px -20px -20px -10px;*/
+  scale: 0.91;
+  filter: blur(1vmin);
   border-radius: var(--cardboarder);
-  box-shadow: -0.3vmin -0.3vmin 0.9vmin 0.3vmin var(--satin-sheen-gold);
+  background-image: conic-gradient(
+    from var(--angle),
+    var(--satin-sheen-gold), 
+    var(--lavender-web),
+    var(--satin-sheen-gold),
+    var(--lavender-web),
+    var(--satin-sheen-gold),
+    var(--lavender-web),
+    var(--satin-sheen-gold),
+    var(--lavender-web),
+    var(--satin-sheen-gold),
+    var(--lavender-web),
+    var(--satin-sheen-gold),
+    var(--lavender-web),
+    var(--satin-sheen-gold)
+  );
+  padding: 1.5vmin 1vmin;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  content: "";
   width: var(--twidth);
   height: var(--theight);
+  z-index: -1;
+  animation: 7s glow linear alternate-reverse infinite;
 }
+
+@keyframes glow {
+  from {
+    --angle: 0deg;
+    padding: 1.5vmin 1vmin;
+  }
+  to {
+    --angle: 360deg;
+    padding: 2vmin 1.5vmin;
+  }
+  
+}
+
+
   #matcontainer {
     width: auto;
     height: max(60vw, 60vh);
@@ -124,7 +185,7 @@
 
   .mat {
     border-radius: var(--cardboarder);
-    box-shadow: inset 0.5vmin 1vmin 3.5vmin  1vmin  rgba(0,0,0,0.49);
+    box-shadow: inset 0.5vmin 1vmin 3.5vmin 1vmin rgba(0,0,0,0.49);
     /*opacity: 0.5;*/
     width: var(--twidth);
     height: var(--theight);
