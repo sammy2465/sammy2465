@@ -25,8 +25,11 @@
     user-select: none;
   }
   #container {
-    width: max(30vw, 30vh);
-    height: max(30vw, 30vh);
+    position: flex;
+    margin: max(8vw, 8vh);
+    margin-left: max(12vw, 12vh);;
+    width: max(20vw, 20vh);
+    height: min(30vw, 30vh);
   }
 
   #topbar {    
@@ -53,7 +56,6 @@
   }
 
   #topbar button {
-    filter: blur(0.1);
     line-height: 4vmax;
     text-align:center;
     text-wrap: nowrap;
@@ -174,8 +176,8 @@
 
 
   #matcontainer {
-    width: auto;
-    height: max(60vw, 60vh);
+    width: 50vmin;
+    height: auto;
     flex-grow: 1;
     flex-direction: column;
     display: flex;
@@ -222,4 +224,15 @@ align-items: center;
 justify-content: center;
 gap: 1.5vmin;
 flex-direction: row;
+}
+
+#amethyst {
+  top: 15vmin;
+  left: 45vmin;
+  position: absolute;
+  width: 10vmin;
+  height: 20vmin;
+  background-image: url("amethyst.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
