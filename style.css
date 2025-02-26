@@ -6,7 +6,7 @@
   --dark-cyan: #558c8cff;
   --falu-red: #782121ff;
     background-color: var(--dark-cyan);
-    --spriteimg: url('tarotsprite_lr.jpg');
+    --spriteimg: url('tarotsprite.avif');
     --cardboarder: 1.5vmin;
     --twidth: calc(2.24 * 10vmin);
     --theight: calc(3.74 * 10vmin);
@@ -218,6 +218,7 @@
   gap: 1.5vmin;
   flex-direction: row;
 }
+
 #matrow2 {
 display: flex;
 align-items: center;
@@ -235,4 +236,37 @@ flex-direction: row;
   background-image: url("amethyst.svg");
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+.interpretation > h1 {
+  margin-top: 2vmin;
+}
+.interpretation {
+  user-select: text;
+  scale: 0.9;
+  position: relative;
+  align-content: center;
+  color: var(--satin-sheen-gold);
+  aspect-ratio: 989 / 1837;
+  background-image: url('border_plain.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: var(--russian-violet);
+  text-align: center;
+  font-size: 3vmin;
+}
+
+.interpretation > img {
+  margin-bottom: -6vmin;
+  clip-path: inset(8% 4% 16% 4%);
+  scale: 1.08;
+  width: var(--twidth);
+  height: var(--theight);
+  background-image: var(--spriteimg);
+  background-size: 1400% 700%;    
+  background-position: calc(100% * var(--col)) calc(100% * var(--row));
+}
+
+.interpretation > pre {
+  margin-right: 5vmin;
 }
